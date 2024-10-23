@@ -1,0 +1,33 @@
+{
+  "name": "ts-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/pg": "^8.10.9",
+    "bcrypt": "^5.1.1",
+    "db-migrate-pg": "^1.5.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.21.0",
+    "inversify": "^6.0.2",
+    "nodemon": "^3.1.7",
+    "oracledb": "^6.6.0",
+    "pg": "^8.11.3",
+    "ping": "^0.4.4",
+    "reflect-metadata": "^0.2.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0"
+  }
+}
