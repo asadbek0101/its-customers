@@ -2,6 +2,7 @@ import { inject, injectable } from "inversify";
 import { IUserInteractor } from "../interfaces/IUserInteractor";
 import { INTERFACE_TYPE } from "../utils/AppConst";
 import { NextFunction, Request, Response } from "express";
+import { createUserSchema } from "../common/userSchema";
 
 @injectable()
 export class UserController {
@@ -37,8 +38,17 @@ export class UserController {
   async createUser(req: Request, res: Response, next: NextFunction) {
     try {
       const user = req.body;
-      const data = await this.interactor.createUser(user);
-      res.status(200).json(data);
+
+      const { error, value } = createUserSchema.validate(user);
+
+      if (error) {
+        res.status(200).json({
+          error: error?.details,
+        });
+      } else {
+        const data = await this.interactor.createUser(user);
+        res.status(200).json(data);
+      }
     } catch (error) {
       next(error);
     }

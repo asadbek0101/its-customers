@@ -29,8 +29,8 @@ export class UserRepository implements IUserRepository {
 
   async create(user: User): Promise<string> {
     const added = await this.client.query(
-      `INSERT INTO "Users"("ComponyName", "Username", "Password", "IsActive") VALUES ($1, $2, $3, '1')`,
-      [user.ComponyName, user.Username, user.Password]
+      `INSERT INTO "Users"("Username", "Password", "IsActive") VALUES ($1, $2, '1')`,
+      [user.Username, user.Password]
     );
     return "Created";
   }
@@ -38,7 +38,7 @@ export class UserRepository implements IUserRepository {
   async update(user: User): Promise<string> {
     const updated = await this.client.query(
       `UPDATE "Users" SET "ComponyName"=$1, "Username"=$2, "Password"=$3 WHERE "Id"=$4`,
-      [user.ComponyName, user.Username, user.Password, user.Id]
+      [user.Username, user.Password, user.Id]
     );
     return "Updated";
   }

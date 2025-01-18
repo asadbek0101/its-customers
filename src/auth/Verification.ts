@@ -7,7 +7,7 @@ export const TokenVerification = (
 ) => {
   try {
     const token = req.header("Authorization");
-    if (!token || !token.startsWith("Bearer ")) {
+    if (!token || !token.startsWith("Bearer")) {
       return res.status(401).json({ message: "Unauthorized" });
     }
     next();
